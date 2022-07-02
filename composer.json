@@ -1,0 +1,30 @@
+{
+  "name": "roots/acorn-example-package",
+  "type": "package",
+  "description": "An example package for Roots Acorn.",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Brandon Nifong",
+      "email": "brandon@tendency.me"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Roots\\AcornExamplePackage\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^7.3|^8.0"
+  },
+  "extra": {
+    "acorn": {
+      "providers": [
+        "Roots\\AcornExamplePackage\\Providers\\InspireServiceProvider"
+      ],
+      "aliases": {
+        "Inspire": "Roots\\AcornExamplePackage\\Facades\\Inspire"
+      }
+    }
+  }
+}
