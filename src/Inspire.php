@@ -3,6 +3,7 @@
 namespace Roots\AcornExamplePackage;
 
 use Illuminate\Support\Arr;
+use Roots\Acorn\Application;
 
 class Inspire
 {
@@ -31,8 +32,8 @@ class Inspire
      */
     public function getQuote()
     {
-        $quotes = config('inspire.quotes');
-
-        return Arr::random($quotes);
+        return Arr::random(
+            config('inspire.quotes')
+        );
     }
 }

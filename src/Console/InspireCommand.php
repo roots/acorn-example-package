@@ -28,6 +28,6 @@ class InspireCommand extends Command
      */
     public function handle()
     {
-        return Inspire::getQuote();
+        $this->info(Inspire::getQuote());
     }
 }

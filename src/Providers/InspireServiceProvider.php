@@ -17,6 +17,11 @@ class InspireServiceProvider extends ServiceProvider
         $this->app->singleton('Inspire', function () {
             return new Inspire($this->app);
         });
+
+        $this->mergeConfigFrom(
+            __DIR__.'/../../config/inspire.php',
+            'inspire'
+        );
     }
 
     /**

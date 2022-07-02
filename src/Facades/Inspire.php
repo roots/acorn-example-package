@@ -13,6 +13,6 @@ class Inspire extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'inspire';
+        return 'Inspire';
     }
 }
