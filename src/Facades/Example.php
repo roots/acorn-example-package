@@ -1,10 +1,10 @@
 <?php
 
-namespace Roots\AcornExamplePackage\Facades;
+namespace VendorName\ExamplePackage\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Inspire extends Facade
+class Example extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -13,6 +13,6 @@ class Inspire extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'Inspire';
+        return 'Example';
     }
 }

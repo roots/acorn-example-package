@@ -11,7 +11,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Roots\\AcornExamplePackage\\": "src/"
+      "VendorName\\ExamplePackage\\": "src/"
     }
   },
   "require": {
@@ -20,10 +20,10 @@
   "extra": {
     "acorn": {
       "providers": [
-        "Roots\\AcornExamplePackage\\Providers\\InspireServiceProvider"
+        "VendorName\\ExamplePackage\\Providers\\ExampleServiceProvider"
       ],
       "aliases": {
-        "Inspire": "Roots\\AcornExamplePackage\\Facades\\Inspire"
+        "Example": "VendorName\\ExamplePackage\\Facades\\Example"
       }
     }
   }

@@ -1,11 +1,11 @@
 <?php
 
-namespace Roots\AcornExamplePackage;
+namespace VendorName\ExamplePackage;
 
 use Illuminate\Support\Arr;
 use Roots\Acorn\Application;
 
-class Inspire
+class Example
 {
     /**
      * The application instance.
@@ -33,7 +33,7 @@ class Inspire
     public function getQuote()
     {
         return Arr::random(
-            config('inspire.quotes')
+            config('example.quotes')
         );
     }
 }
