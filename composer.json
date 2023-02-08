@@ -1,5 +1,5 @@
 {
-  "name": "roots/acorn-example-package",
+  "name": "vendor-name/example-package",
   "type": "package",
   "description": "An example package for Roots Acorn.",
   "license": "MIT",
@@ -15,7 +15,7 @@
     }
   },
   "require": {
-    "php": "^7.3|^8.0"
+    "php": "^8.0"
   },
   "extra": {
     "acorn": {
