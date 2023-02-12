@@ -1,5 +1,5 @@
 {
-  "name": "roots/acorn-example-package",
+  "name": "vendor-name/example-package",
   "type": "package",
   "description": "An example package for Roots Acorn.",
   "license": "MIT",
@@ -11,19 +11,19 @@
   ],
   "autoload": {
     "psr-4": {
-      "Roots\\AcornExamplePackage\\": "src/"
+      "VendorName\\ExamplePackage\\": "src/"
     }
   },
   "require": {
-    "php": "^7.3|^8.0"
+    "php": "^8.0"
   },
   "extra": {
     "acorn": {
       "providers": [
-        "Roots\\AcornExamplePackage\\Providers\\InspireServiceProvider"
+        "VendorName\\ExamplePackage\\Providers\\ExampleServiceProvider"
       ],
       "aliases": {
-        "Inspire": "Roots\\AcornExamplePackage\\Facades\\Inspire"
+        "Example": "VendorName\\ExamplePackage\\Facades\\Example"
       }
     }
   }

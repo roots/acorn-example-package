@@ -1,25 +1,25 @@
 <?php
 
-namespace Roots\AcornExamplePackage\Console;
+namespace VendorName\ExamplePackage\Console;
 
 use Roots\Acorn\Console\Commands\Command;
-use Roots\AcornExamplePackage\Facades\Inspire;
+use VendorName\ExamplePackage\Facades\Example;
 
-class InspireCommand extends Command
+class ExampleCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'example:inspire';
+    protected $signature = 'example';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Retrieve a random inspirational quote.';
+    protected $description = 'My custom Acorn command.';
 
     /**
      * Execute the console command.
@@ -28,6 +28,8 @@ class InspireCommand extends Command
      */
     public function handle()
     {
-        $this->info(Inspire::getQuote());
+        $this->info(
+            Example::getQuote()
+        );
     }
 }

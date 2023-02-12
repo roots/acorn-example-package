@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Inspire
+    | Example Package
     |--------------------------------------------------------------------------
     |
     | Configuration files provide a great way to customize your package.
@@ -19,6 +19,5 @@ return [
 
     'quotes' => [
         'For every Sage there is an Acorn.',
-        '...',
     ],
 ];
