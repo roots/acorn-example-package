@@ -2,7 +2,7 @@
 
 namespace VendorName\ExamplePackage\Providers;
 
-use Roots\Acorn\ServiceProvider;
+use Illuminate\Support\ServiceProvider;
 use VendorName\ExamplePackage\Console\ExampleCommand;
 use VendorName\ExamplePackage\Example;
 
