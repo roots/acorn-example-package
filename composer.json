@@ -1,31 +1,30 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "type": "package",
-    "description": ":package_description",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": ":author_name",
-            "email": ":author_email"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            ":vendor_name\\:class_name\\": "src/"
-        }
-    },
-    "require": {
-
-        "php": "^8.0"
-    },
-    "extra": {
-        "acorn": {
-            "providers": [
-                ":vendor_name\\:class_name\\Providers\\:class_nameServiceProvider"
-            ],
-            "aliases": {
-                ":class_name": ":vendor_name\\:class_name\\Facades\\:class_name"
-            }
-        }
+  "name": ":vendor_slug/:package_slug",
+  "type": "package",
+  "description": ":package_description",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": ":author_name",
+      "email": ":author_email"
     }
+  ],
+  "autoload": {
+    "psr-4": {
+      ":vendor_name\\:class_name\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^8.1"
+  },
+  "extra": {
+    "acorn": {
+      "providers": [
+        ":vendor_name\\:class_name\\Providers\\:class_nameServiceProvider"
+      ],
+      "aliases": {
+        ":class_name": ":vendor_name\\:class_name\\Facades\\:class_name"
+      }
+    }
+  }
 }
