@@ -1,29 +1,29 @@
 {
-  "name": "vendor-name/example-package",
+  "name": ":vendor_slug/:package_slug",
   "type": "package",
-  "description": "An example package for Roots Acorn.",
+  "description": ":package_description",
   "license": "MIT",
   "authors": [
     {
-      "name": "Brandon Nifong",
-      "email": "brandon@tendency.me"
+      "name": ":author_name",
+      "email": ":author_email"
     }
   ],
   "autoload": {
     "psr-4": {
-      "VendorName\\ExamplePackage\\": "src/"
+      ":vendor_name\\:class_name\\": "src/"
     }
   },
   "require": {
-    "php": "^8.0"
+    "php": "^8.1"
   },
   "extra": {
     "acorn": {
       "providers": [
-        "VendorName\\ExamplePackage\\Providers\\ExampleServiceProvider"
+        ":vendor_name\\:class_name\\Providers\\:class_nameServiceProvider"
       ],
       "aliases": {
-        "Example": "VendorName\\ExamplePackage\\Facades\\Example"
+        ":class_name": ":vendor_name\\:class_name\\Facades\\:class_name"
       }
     }
   }
