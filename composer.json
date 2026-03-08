@@ -17,6 +17,9 @@
   "require": {
     "php": "^8.2"
   },
+  "scripts": {
+    "test:configure": "@php tests/smoke/configure_smoke.php"
+  },
   "extra": {
     "acorn": {
       "providers": [
