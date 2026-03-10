@@ -29,5 +29,8 @@
         "Example": "VendorName\\ExamplePackage\\Facades\\Example"
       }
     }
+  },
+  "require-dev": {
+    "laravel/pint": "^1.27"
   }
 }
