@@ -17,7 +17,6 @@ class Example
     /**
      * Create a new Example instance.
      *
-     * @param  \Roots\Acorn\Application  $app
      * @return void
      */
     public function __construct(Application $app)

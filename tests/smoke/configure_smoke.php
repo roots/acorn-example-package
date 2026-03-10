@@ -4,7 +4,7 @@
 declare(strict_types=1);
 
 $sourceRoot = dirname(__DIR__, 2);
-$tempRoot = rtrim(sys_get_temp_dir(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . 'acorn-example-configure-' . bin2hex(random_bytes(6));
+$tempRoot = rtrim(sys_get_temp_dir(), DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR.'acorn-example-configure-'.bin2hex(random_bytes(6));
 
 recursiveCopy($sourceRoot, $tempRoot, ['.git', 'vendor']);
 
@@ -22,9 +22,9 @@ $args = [
     '--yes',
 ];
 
-$command = 'cd ' . escapeshellarg($tempRoot) . ' && ' . implode(' ', array_map('escapeshellarg', $args));
-exec($command . ' 2>&1', $output, $exitCode);
-assertTrue($exitCode === 0, "configure.php failed:\n" . implode("\n", $output));
+$command = 'cd '.escapeshellarg($tempRoot).' && '.implode(' ', array_map('escapeshellarg', $args));
+exec($command.' 2>&1', $output, $exitCode);
+assertTrue($exitCode === 0, "configure.php failed:\n".implode("\n", $output));
 
 $expectedFiles = [
     'src/HelloPackage.php',
@@ -45,11 +45,11 @@ $oldFiles = [
 ];
 
 foreach ($expectedFiles as $file) {
-    assertTrue(is_file($tempRoot . DIRECTORY_SEPARATOR . $file), "Expected file missing: {$file}");
+    assertTrue(is_file($tempRoot.DIRECTORY_SEPARATOR.$file), "Expected file missing: {$file}");
 }
 
 foreach ($oldFiles as $file) {
-    assertTrue(! file_exists($tempRoot . DIRECTORY_SEPARATOR . $file), "Old file still present: {$file}");
+    assertTrue(! file_exists($tempRoot.DIRECTORY_SEPARATOR.$file), "Old file still present: {$file}");
 }
 
 $removedScaffoldFiles = [
@@ -58,10 +58,10 @@ $removedScaffoldFiles = [
 ];
 
 foreach ($removedScaffoldFiles as $file) {
-    assertTrue(! file_exists($tempRoot . DIRECTORY_SEPARATOR . $file), "Scaffold file still present: {$file}");
+    assertTrue(! file_exists($tempRoot.DIRECTORY_SEPARATOR.$file), "Scaffold file still present: {$file}");
 }
 
-$composerPath = $tempRoot . DIRECTORY_SEPARATOR . 'composer.json';
+$composerPath = $tempRoot.DIRECTORY_SEPARATOR.'composer.json';
 $composer = json_decode((string) file_get_contents($composerPath), true, 512, JSON_THROW_ON_ERROR);
 
 assertTrue(($composer['name'] ?? null) === 'acme/hello-package', 'composer.json name was not updated');
@@ -71,24 +71,24 @@ assertTrue(($composer['authors'][0]['email'] ?? null) === 'smoke@example.com', '
 assertTrue(isset($composer['autoload']['psr-4']['Acme\\HelloPackage\\']), 'composer psr-4 key was not updated');
 assertTrue(! isset($composer['scripts']['test:configure']), 'template-only composer script should be removed');
 
-$providerFile = (string) file_get_contents($tempRoot . DIRECTORY_SEPARATOR . 'src/Providers/HelloPackageServiceProvider.php');
-assertContains($providerFile, "namespace Acme\\HelloPackage\\Providers;", 'provider namespace mismatch');
+$providerFile = (string) file_get_contents($tempRoot.DIRECTORY_SEPARATOR.'src/Providers/HelloPackageServiceProvider.php');
+assertContains($providerFile, 'namespace Acme\\HelloPackage\\Providers;', 'provider namespace mismatch');
 assertContains($providerFile, "singleton('HelloPackage'", 'provider singleton key mismatch');
-assertContains($providerFile, "config/hello-package.php", 'provider config path mismatch');
+assertContains($providerFile, 'config/hello-package.php', 'provider config path mismatch');
 assertContains($providerFile, "'hello-package'", 'provider config key mismatch');
 assertContains($providerFile, "configPath('hello-package.php')", 'provider config publish path mismatch');
 
-$commandFile = (string) file_get_contents($tempRoot . DIRECTORY_SEPARATOR . 'src/Console/HelloPackageCommand.php');
-assertContains($commandFile, "namespace Acme\\HelloPackage\\Console;", 'command namespace mismatch');
-assertContains($commandFile, "class HelloPackageCommand extends Command", 'command class mismatch');
+$commandFile = (string) file_get_contents($tempRoot.DIRECTORY_SEPARATOR.'src/Console/HelloPackageCommand.php');
+assertContains($commandFile, 'namespace Acme\\HelloPackage\\Console;', 'command namespace mismatch');
+assertContains($commandFile, 'class HelloPackageCommand extends Command', 'command class mismatch');
 assertContains($commandFile, "protected \$signature = 'hello-package';", 'command signature mismatch');
 
-$facadeFile = (string) file_get_contents($tempRoot . DIRECTORY_SEPARATOR . 'src/Facades/HelloPackage.php');
-assertContains($facadeFile, "namespace Acme\\HelloPackage\\Facades;", 'facade namespace mismatch');
-assertContains($facadeFile, "class HelloPackage extends Facade", 'facade class mismatch');
+$facadeFile = (string) file_get_contents($tempRoot.DIRECTORY_SEPARATOR.'src/Facades/HelloPackage.php');
+assertContains($facadeFile, 'namespace Acme\\HelloPackage\\Facades;', 'facade namespace mismatch');
+assertContains($facadeFile, 'class HelloPackage extends Facade', 'facade class mismatch');
 assertContains($facadeFile, "return 'HelloPackage';", 'facade accessor mismatch');
 
-$readmeFile = (string) file_get_contents($tempRoot . DIRECTORY_SEPARATOR . 'README.md');
+$readmeFile = (string) file_get_contents($tempRoot.DIRECTORY_SEPARATOR.'README.md');
 assertContains($readmeFile, 'composer require acme/hello-package', 'README package install line mismatch');
 assertContains($readmeFile, "@include('HelloPackage::hello-package')", 'README blade usage mismatch');
 assertContains($readmeFile, '$ wp acorn hello-package', 'README command usage mismatch');
@@ -117,11 +117,12 @@ function recursiveCopy(string $source, string $target, array $excludeNames = [])
             continue;
         }
 
-        $srcPath = $source . DIRECTORY_SEPARATOR . $item;
-        $dstPath = $target . DIRECTORY_SEPARATOR . $item;
+        $srcPath = $source.DIRECTORY_SEPARATOR.$item;
+        $dstPath = $target.DIRECTORY_SEPARATOR.$item;
 
         if (is_dir($srcPath)) {
             recursiveCopy($srcPath, $dstPath, $excludeNames);
+
             continue;
         }
 
@@ -139,6 +140,7 @@ function recursiveRemove(string $path): void
 
     if (is_file($path) || is_link($path)) {
         unlink($path);
+
         return;
     }
 
@@ -152,7 +154,7 @@ function recursiveRemove(string $path): void
             continue;
         }
 
-        recursiveRemove($path . DIRECTORY_SEPARATOR . $item);
+        recursiveRemove($path.DIRECTORY_SEPARATOR.$item);
     }
 
     rmdir($path);
@@ -161,7 +163,7 @@ function recursiveRemove(string $path): void
 function assertTrue(bool $condition, string $message): void
 {
     if (! $condition) {
-        fwrite(STDERR, $message . "\n");
+        fwrite(STDERR, $message."\n");
         exit(1);
     }
 }

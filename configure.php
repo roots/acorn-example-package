@@ -144,7 +144,7 @@ function resolveValues(array $options): array
         }
 
         if ($missing !== []) {
-            fwrite(STDERR, 'Missing required options for --no-interaction: ' . implode(', ', $missing) . "\n");
+            fwrite(STDERR, 'Missing required options for --no-interaction: '.implode(', ', $missing)."\n");
             exit(1);
         }
 
@@ -249,7 +249,7 @@ function updateComposerJson(array $values, bool $dryRun): int
         return 0;
     }
 
-    printChange(($dryRun ? 'Would update' : 'Updated') . ' composer.json');
+    printChange(($dryRun ? 'Would update' : 'Updated').' composer.json');
 
     if (! $dryRun) {
         file_put_contents('composer.json', $new);
@@ -317,7 +317,7 @@ function updateTextFiles(array $values, bool $dryRun): int
             continue;
         }
 
-        printChange(($dryRun ? 'Would update' : 'Updated') . " {$file}");
+        printChange(($dryRun ? 'Would update' : 'Updated')." {$file}");
 
         if (! $dryRun) {
             file_put_contents($file, $updated);
@@ -353,7 +353,7 @@ function renameFiles(array $values, bool $dryRun): int
             exit(1);
         }
 
-        printChange(($dryRun ? 'Would rename' : 'Renamed') . " {$source} -> {$target}");
+        printChange(($dryRun ? 'Would rename' : 'Renamed')." {$source} -> {$target}");
 
         if (! $dryRun) {
             rename($source, $target);
@@ -374,7 +374,7 @@ function cleanupScaffoldFiles(bool $dryRun): int
             continue;
         }
 
-        printChange(($dryRun ? 'Would remove' : 'Removed') . " {$file}");
+        printChange(($dryRun ? 'Would remove' : 'Removed')." {$file}");
 
         if (! $dryRun) {
             unlink($file);
@@ -392,7 +392,7 @@ function cleanupScaffoldFiles(bool $dryRun): int
             continue;
         }
 
-        printChange(($dryRun ? 'Would remove empty directory' : 'Removed empty directory') . " {$directory}");
+        printChange(($dryRun ? 'Would remove empty directory' : 'Removed empty directory')." {$directory}");
 
         if (! $dryRun) {
             rmdir($directory);
@@ -427,7 +427,7 @@ function encodeComposerJson(array $composer): string
         return str_repeat(' ', intdiv(strlen($matches[1]), 2));
     }, $json);
 
-    return (string) $json . "\n";
+    return (string) $json."\n";
 }
 
 function readComposerJson(): array
@@ -453,12 +453,12 @@ function printSummary(array $values, array $options): void
     echo "- class_name: {$values['class_name']}\n";
     echo "- package_description: {$values['package_description']}\n";
     echo "- command_signature: {$values['command_signature']}\n";
-    echo "- mode: " . ($options['dry_run'] ? 'dry-run' : 'apply') . "\n\n";
+    echo '- mode: '.($options['dry_run'] ? 'dry-run' : 'apply')."\n\n";
 }
 
 function printHelp(): void
 {
-    echo <<<TXT
+    echo <<<'TXT'
 Usage:
   php configure.php [options]
 
