@@ -10,7 +10,7 @@ class Example
     /**
      * The application instance.
      *
-     * @var \Roots\Acorn\Application
+     * @var Application
      */
     protected $app;
 
